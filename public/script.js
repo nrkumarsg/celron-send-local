@@ -39,45 +39,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (voucherForm && voucherModal) {
+            const redeemView = document.getElementById('voucher-redeem-view');
+            const freeView = document.getElementById('voucher-free-view');
+            const viewFreeBtn = document.getElementById('view-free-voucher-btn');
+            const backToRedeemBtn = document.getElementById('back-to-redeem-btn');
+
+            // Toggle to Free Voucher View
+            if (viewFreeBtn) {
+                viewFreeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    redeemView.classList.add('hidden');
+                    freeView.classList.remove('hidden');
+                });
+            }
+
+            // Toggle back to Redeem View
+            if (backToRedeemBtn) {
+                backToRedeemBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    freeView.classList.add('hidden');
+                    redeemView.classList.remove('hidden');
+                });
+            }
+
             voucherForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Get all professional fields
                 const name = document.getElementById('v-name')?.value || 'N/A';
-                const addr = document.getElementById('v-address')?.value || 'N/A';
                 const email = document.getElementById('v-email')?.value || 'N/A';
-                const phone = document.getElementById('v-phone')?.value || 'N/A';
-                const city = document.getElementById('v-city')?.value || 'N/A';
-                const rank = document.getElementById('v-position')?.value || 'N/A';
                 const comp = document.getElementById('v-company')?.value || 'N/A';
                 const vessel = document.getElementById('v-vessel')?.value || 'N/A';
-                const code = document.getElementById('v-code')?.value || 'PRO2026';
+                const codeInput = document.getElementById('v-code')?.value.trim().toUpperCase();
 
-                // Construct Multi-Recipient Maritime Report
-                const subject = `AirCable Pro License Registration: ${vessel}`;
-                const body = `--- AIR-CABLE PRO REGISTRATION REPORT ---\n\n` +
-                             `Name: ${name}\n` +
-                             `Position/Rank: ${rank}\n` +
-                             `Company: ${comp}\n` +
-                             `Vessel: ${vessel}\n` +
-                             `Email: ${email}\n` +
-                             `Phone: ${phone}\n` +
-                             `Address: ${addr}, ${city}\n` +
-                             `Voucher Code: ${code}\n\n` +
-                             `------------------------------------------\n` +
-                             `Sent from AirCable Industrial PWA`;
+                // Official Voucher Code Validation
+                const OFFICIAL_CODE = "CELRON-PRO-2026";
 
-                const mailto = `mailto:sales@celron.net,sales@arkissg.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                window.location.href = mailto;
-
-                // Unlock Pro Badge Locally
-                localStorage.setItem('aircable_pro_user', 'true');
-                isPro = true;
-                updateProUI();
-                
-                // Success feedback and close
-                voucherModal.classList.add('hidden');
-                showToast("Voucher Report Sent! Pro License Unlocked.", 5000);
+                if (codeInput === OFFICIAL_CODE) {
+                    // Unlock Pro Badge Locally
+                    localStorage.setItem('aircable_pro_user', 'true');
+                    isPro = true;
+                    updateProUI();
+                    
+                    // Success feedback and close
+                    voucherModal.classList.add('hidden');
+                    showToast("LIFETIME PRO UNLOCKED! Welcome aboard.", 5000);
+                    
+                    // Construct silent report (optional, but good for logs)
+                    const subject = `AirCable PRO Activated: ${vessel}`;
+                    const body = `Vessel: ${vessel}\nCompany: ${comp}\nUser: ${name}\nEmail: ${email}\nCode: ${codeInput}`;
+                    console.log("Pro Activation Report:", { subject, body });
+                } else {
+                    showToast("Invalid Voucher Code. Please check and try again.", 4000);
+                    const codeField = document.getElementById('v-code');
+                    if (codeField) {
+                        codeField.style.borderColor = "#dc3545";
+                        codeField.style.background = "rgba(220, 53, 69, 0.05)";
+                        setTimeout(() => {
+                            codeField.style.borderColor = "rgba(230, 126, 34, 0.4)";
+                            codeField.style.background = "rgba(230, 126, 34, 0.02)";
+                        }, 2000);
+                    }
+                }
             });
         }
     }

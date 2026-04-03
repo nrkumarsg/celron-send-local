@@ -13,57 +13,86 @@
 <body>
     <!-- Voucher Redemption Modal (Moved to Top for Priority) -->
     <div id="voucher-modal" class="modal-overlay hidden" style="z-index: 99999; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
-        <div class="modal" style="max-width: 500px; padding: 2.5rem; border-radius: 28px; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6); background: white; margin: 20px;">
-            <div class="modal-icon" style="color: #e67e22; margin-bottom: 0;">
-                <i class="fa-solid fa-ticket fa-3x"></i>
-            </div>
-            <h2 style="margin-top: 15px; font-weight: 800; font-size: 1.8rem; color: #1e293b;">Redeem Business Voucher</h2>
-            <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 2rem;">Enter your vessel/contact info to unlock your Lifetime Pro License.</p>
+        <div class="modal" style="max-width: 500px; padding: 2rem; border-radius: 28px; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6); background: white; margin: 20px; position: relative;">
             
-            <form id="voucher-form" style="text-align: left; display: flex; flex-direction: column; gap: 12px;">
-                <style>
-                    .uniform-input {
-                        width: 100%;
-                        padding: 12px 18px;
-                        border: 1.5px solid #e2e8f0;
-                        border-radius: 12px;
-                        font-size: 0.95rem;
-                        font-family: 'Inter', sans-serif;
-                        transition: all 0.2s ease;
-                        box-sizing: border-box;
-                        background: #f8fafc;
-                    }
-                    .uniform-input:focus {
-                        outline: none;
-                        border-color: #e67e22;
-                        background: #fff;
-                        box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1);
-                    }
-                    .input-grid {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 12px;
-                    }
-                </style>
-                <input type="text" id="v-name" name="name" class="uniform-input" placeholder="Full Name" required>
-                <textarea id="v-address" name="address" class="uniform-input" placeholder="Physical Address / Office Location" style="height: 70px; resize: none;" required></textarea>
-                <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Professional Email" required>
-                <input type="tel" id="v-phone" name="phone" class="uniform-input" placeholder="WhatsApp / Mobile Number" required>
-                
-                <div class="input-grid">
-                    <input type="text" id="v-city" name="city" class="uniform-input" placeholder="City" required>
-                    <input type="text" id="v-position" name="position" class="uniform-input" placeholder="Position / Rank" required>
+            <!-- Close Button -->
+            <button class="icon-btn" style="position: absolute; right: 20px; top: 20px; color: #64748b;" onclick="document.getElementById('voucher-modal').classList.add('hidden')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- View 1: Redemption Form -->
+            <div id="voucher-redeem-view">
+                <div class="modal-icon" style="color: #e67e22; margin-bottom: 0;">
+                    <i class="fa-solid fa-ticket fa-3x"></i>
                 </div>
+                <h2 style="margin-top: 15px; font-weight: 800; font-size: 1.8rem; color: #1e293b;">Redeem Business Voucher</h2>
+                <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem;">Enter your vessel/contact info to unlock your Lifetime Pro License.</p>
                 
-                <input type="text" id="v-company" name="company" class="uniform-input" placeholder="Company Name" required>
-                <input type="text" id="v-vessel" name="vessel" class="uniform-input" placeholder="Vessel Name (N.A if None)" required>
-                <input type="text" id="v-code" name="voucher" class="uniform-input" style="border-color: rgba(230, 126, 34, 0.4); background: rgba(230, 126, 34, 0.02); font-weight: 700;" placeholder="Voucher Code (e.g. CELRON2026)">
-                
-                <div style="display: flex; gap: 12px; margin-top: 15px;">
-                    <button type="button" class="btn" style="flex: 1; border: 1.5px solid #cbd5e1; background: #fff; padding: 14px; border-radius: 14px; font-weight: 700; color: #64748b;" onclick="document.getElementById('voucher-modal').classList.add('hidden')">Cancel</button>
-                    <button type="submit" class="btn btn-primary" style="flex: 2; background: #e67e22; border: none; padding: 14px; border-radius: 14px; font-weight: 800; color: white; box-shadow: 0 10px 15px rgba(230, 126, 34, 0.2);">Claim Pro License</button>
+                <form id="voucher-form" style="text-align: left; display: flex; flex-direction: column; gap: 10px;">
+                    <style>
+                        .uniform-input {
+                            width: 100%;
+                            padding: 10px 15px;
+                            border: 1.5px solid #e2e8f0;
+                            border-radius: 10px;
+                            font-size: 0.9rem;
+                            font-family: 'Inter', sans-serif;
+                            transition: all 0.2s ease;
+                            box-sizing: border-box;
+                            background: #f8fafc;
+                        }
+                        .uniform-input:focus {
+                            outline: none;
+                            border-color: #e67e22;
+                            background: #fff;
+                            box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1);
+                        }
+                        .input-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 10px;
+                        }
+                    </style>
+                    <input type="text" id="v-name" name="name" class="uniform-input" placeholder="Full Name" required>
+                    <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Professional Email" required>
+                    
+                    <div class="input-grid">
+                        <input type="text" id="v-company" name="company" class="uniform-input" placeholder="Company Name" required>
+                        <input type="text" id="v-vessel" name="vessel" class="uniform-input" placeholder="Vessel Name" required>
+                    </div>
+                    
+                    <input type="text" id="v-code" name="voucher" class="uniform-input" style="border-color: rgba(230, 126, 34, 0.4); background: rgba(230, 126, 34, 0.02); font-weight: 800; text-align: center; font-size: 1.1rem; letter-spacing: 1px;" placeholder="ENTER CODE HERE">
+                    
+                    <button type="submit" class="btn btn-primary" style="background: #e67e22; border: none; padding: 14px; border-radius: 14px; font-weight: 800; color: white; box-shadow: 0 10px 15px rgba(230, 126, 34, 0.2); margin-top: 10px;">Claim Pro License</button>
+                    
+                    <div style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+                        <span style="color: #64748b;">Don't have a code?</span> 
+                        <a href="#" id="view-free-voucher-btn" style="color: #e67e22; font-weight: 700; text-decoration: underline; margin-left: 5px;">Get one for FREE →</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- View 2: Free Voucher Gallery -->
+            <div id="voucher-free-view" class="hidden">
+                <div class="modal-icon" style="color: #2ecc71; margin-bottom: 0;">
+                    <i class="fa-solid fa-gift fa-3x"></i>
                 </div>
-            </form>
+                <h2 style="margin-top: 15px; font-weight: 800; font-size: 1.8rem; color: #1e293b;">Exclusive Gift</h2>
+                <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem;">Complimentary Digital Product Voucher for Exclusive Customers.</p>
+                
+                <div style="background: #f1f5f9; border-radius: 16px; padding: 10px; margin-bottom: 20px;">
+                    <img src="voucher-card.png" id="voucher-img-preview" alt="AirCable Voucher" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; display: block;">
+                </div>
+
+                <a href="https://wa.me/6581962270?text=Hi%20Cel-Ron%20Support%2C%20I%20am%20using%20AirCable%20and%20would%20like%20to%20request%20a%20free%20Voucher%20Code%20to%20unlock%20my%20Lifetime%20Pro%20License!" target="_blank" class="btn btn-primary" style="background: #25D366; border: none; padding: 16px; border-radius: 16px; font-weight: 800; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i> Request via WhatsApp
+                </a>
+
+                <button id="back-to-redeem-btn" style="background: none; border: none; color: #64748b; font-weight: 700; margin-top: 20px; cursor: pointer; font-size: 0.9rem; text-decoration: underline;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Redemption
+                </button>
+            </div>
+
         </div>
     </div>
 
