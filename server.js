@@ -138,6 +138,10 @@ io.on('connection', (socket) => {
         io.to(data.target).emit('relay-done', { sender: socket.id });
     });
 
+    socket.on('request-peers-update', () => {
+        broadcastToRoom(socket.currentRoom);
+    });
+
     socket.on('disconnect', () => {
         if (peers[socket.id]) {
             console.log(`[-] Peer disconnected: ${peers[socket.id].name} (${socket.id})`);

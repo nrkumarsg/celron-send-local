@@ -7,19 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
     
     if (landing && app && startBtn) {
-        if (sessionStorage.getItem('aircable-started')) {
-            landing.style.display = 'none';
-            app.classList.remove('hidden-app');
-        } else {
-            startBtn.addEventListener('click', () => {
-                sessionStorage.setItem('aircable-started', 'true');
-                landing.style.opacity = '0';
-                setTimeout(() => {
-                    landing.style.display = 'none';
-                    app.classList.remove('hidden-app');
-                }, 150);
-            });
-        }
+        // Removed sessionStorage auto-skip to ensure Landing Page always shows on refresh
+        startBtn.addEventListener('click', () => {
+            landing.style.opacity = '0';
+            setTimeout(() => {
+                landing.style.display = 'none';
+                app.classList.remove('hidden-app');
+            }, 150);
+        });
     }
 
     // --- Tabs switching logic ---
@@ -167,8 +162,25 @@ socket.on('disconnect', () => {
 // Support for dismissing redundant nodes locally
 window.dismissedPeers = new Set();
 window.dismissPeer = (peerId) => {
+    // Detect if this is a "Self-Tab" (same name)
+    const peer = activePeersData[peerId];
+    if (peer && peer.name === myName) {
+        alert("This is you in another browser tab! \n\nClosing this icon only hides it locally. To remove it permanently, please close that extra browser tab.");
+    }
+
     window.dismissedPeers.add(peerId);
-    // Request update to redraw everything
+    
+    // Force immediate local UI update for snappy feel
+    const list = document.getElementById('peers-list');
+    const cards = list.querySelectorAll('.peer-card');
+    cards.forEach(card => {
+        if (card.querySelector('.dismiss-peer-btn')?.getAttribute('onclick')?.includes(peerId)) {
+            card.style.opacity = '0';
+            setTimeout(() => card.remove(), 200);
+        }
+    });
+
+    // Notify server to broadcast update to other devices (if any)
     socket.emit('request-peers-update'); 
 };
 
@@ -863,4 +875,71 @@ document.addEventListener('click', (e) => {
             window.pendingPastedFile = null;
         }
     }
+});
+// --- Voucher & Business Lead Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const voucherModal = document.getElementById('voucher-modal');
+    const openVoucherBtn = document.getElementById('open-voucher-btn');
+    const redeemBtn = document.getElementById('redeem-btn'); // Header icon
+    const closeVoucherBtn = document.getElementById('close-voucher-btn');
+    const voucherForm = document.getElementById('voucher-form');
+
+    const openModal = (e) => {
+        if(e) e.preventDefault();
+        voucherModal?.classList.remove('hidden');
+    };
+
+    openVoucherBtn?.addEventListener('click', openModal);
+    redeemBtn?.addEventListener('click', openModal);
+
+    closeVoucherBtn?.addEventListener('click', () => {
+        voucherModal?.classList.add('hidden');
+    });
+
+    voucherForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('v-name').value;
+        const address = document.getElementById('v-address').value;
+        const email = document.getElementById('v-email').value;
+        const phone = document.getElementById('v-phone').value;
+        const company = document.getElementById('v-company').value;
+        const position = document.getElementById('v-position').value;
+        const vessel = document.getElementById('v-vessel').value;
+        const code = document.getElementById('v-code').value.toUpperCase();
+
+        const isCodeValid = code.includes('CELRON-PRO-2026') || code.includes('GIFT2026');
+
+        // B2B Redundant Mailto Routing
+        const subject = `[Voucher Claim] AirCable Pro - ${company} (${vessel})`;
+        const body = `--- NEW LEAD DATA ---
+Full Name: ${name}
+Company: ${company}
+Position: ${position}
+Vessel: ${vessel}
+Email: ${email}
+WhatsApp: ${phone}
+Address: ${address}
+Voucher Code: ${code}
+---------------------
+Status: ${isCodeValid ? 'APPROVED (VALID CODE)' : 'PENDING VERIFICATION (INVALID CODE)'}`;
+
+        const mailto1 = "sales@celron.net";
+        const mailto2 = "sales@arkissg.com";
+        const mailUrl = `mailto:${mailto1},${mailto2}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.location.href = mailUrl;
+
+        if (isCodeValid) {
+            localStorage.setItem('aircable_pro_user', 'true');
+            isPro = true;
+            updateProUI();
+            alert("Voucher Validated! Your Pro features are now unlocked. Welcome to the Cel-Ron Enterprise ecosystem.");
+        } else {
+            alert("Registration Submitted! Our sales team will verify your details and manually activate your Pro license within 24 hours.");
+        }
+
+        voucherModal?.classList.add('hidden');
+        voucherForm.reset();
+    });
 });
