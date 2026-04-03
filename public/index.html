@@ -29,18 +29,18 @@
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 400px; margin: 0 auto;">
-                <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.1rem; padding: 1.1rem; border-radius:14px; font-weight: 700;">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:8px;"></i></button>
-                
-                <!-- High-Conversion B2B Redemption Link -->
-                <div id="voucher-link-container" style="text-align: center; margin-bottom: 5px;">
-                    <a href="#" id="open-voucher-btn" style="color: #e67e22; text-decoration: none; font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px dashed #e67e22; padding: 12px; border-radius: 12px; background: rgba(230, 126, 34, 0.05); margin-top: 5px;">
+                <!-- High-Conversion B2B Redemption Link (Priority Position) -->
+                <div id="voucher-link-container" style="text-align: center; margin-bottom: 0;">
+                    <a href="#" id="open-voucher-btn" style="color: #e67e22; text-decoration: none; font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px dashed #e67e22; padding: 12px; border-radius: 12px; background: rgba(230, 126, 34, 0.05); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                         <i class="fa-solid fa-ticket"></i> Have a Cel-Ron voucher? <span style="text-decoration: underline;">Click here to Register & Unlock your Lifetime Pro License →</span>
                     </a>
                 </div>
 
+                <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.1rem; padding: 1.1rem; border-radius:14px; font-weight: 700;">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:8px;"></i></button>
+                
                 <!-- Discreet Download Link -->
-                <a href="/download.html" class="btn" style="width: 100%; border: 1px solid var(--border-color); color: var(--primary-color); font-weight: 700; border-radius: 14px; padding: 1rem; background: #eef5ff; text-decoration: none;">
-                    <i class="fa-solid fa-mobile-screen"></i> Download Mobile & Desktop <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-left:5px;"></i>
+                <a href="/download.html" class="btn" style="width: 100%; border: 1px solid var(--border-color); color: var(--primary-color); font-weight: 700; border-radius: 14px; padding: 1rem; background: #eef5ff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-mobile-screen"></i> Download Mobile & Desktop <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
                 </a>
             </div>
         </div>
