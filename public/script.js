@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const name = document.getElementById('v-name')?.value || 'N/A';
                 const email = document.getElementById('v-email')?.value || 'N/A';
+                const phone = document.getElementById('v-phone')?.value || 'N/A';
+                const addr = document.getElementById('v-address')?.value || 'N/A';
+                const city = document.getElementById('v-city')?.value || 'N/A';
+                const rank = document.getElementById('v-position')?.value || 'N/A';
                 const comp = document.getElementById('v-company')?.value || 'N/A';
                 const vessel = document.getElementById('v-vessel')?.value || 'N/A';
                 const codeInput = document.getElementById('v-code')?.value.trim().toUpperCase();
@@ -84,10 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     voucherModal.classList.add('hidden');
                     showToast("LIFETIME PRO UNLOCKED! Welcome aboard.", 5000);
                     
-                    // Construct silent report (optional, but good for logs)
+                    // Construct activation report
                     const subject = `AirCable PRO Activated: ${vessel}`;
-                    const body = `Vessel: ${vessel}\nCompany: ${comp}\nUser: ${name}\nEmail: ${email}\nCode: ${codeInput}`;
-                    console.log("Pro Activation Report:", { subject, body });
+                    const body = `Vessel: ${vessel}\n` +
+                                 `Company: ${comp}\n` +
+                                 `User: ${name} (${rank})\n` +
+                                 `Email: ${email}\n` +
+                                 `WhatsApp: ${phone}\n` +
+                                 `Address: ${addr}, ${city}\n` +
+                                 `Code Used: ${codeInput}`;
+                    console.log("Pro Activation Report:", body);
                 } else {
                     showToast("Invalid Voucher Code. Please check and try again.", 4000);
                     const codeField = document.getElementById('v-code');

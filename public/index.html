@@ -28,14 +28,14 @@
                 <h2 style="margin-top: 15px; font-weight: 800; font-size: 1.8rem; color: #1e293b;">Redeem Business Voucher</h2>
                 <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem;">Enter your vessel/contact info to unlock your Lifetime Pro License.</p>
                 
-                <form id="voucher-form" style="text-align: left; display: flex; flex-direction: column; gap: 10px;">
+                <form id="voucher-form" style="text-align: left; display: flex; flex-direction: column; gap: 8px;">
                     <style>
                         .uniform-input {
                             width: 100%;
-                            padding: 10px 15px;
+                            padding: 10px 14px;
                             border: 1.5px solid #e2e8f0;
                             border-radius: 10px;
-                            font-size: 0.9rem;
+                            font-size: 0.85rem;
                             font-family: 'Inter', sans-serif;
                             transition: all 0.2s ease;
                             box-sizing: border-box;
@@ -50,22 +50,32 @@
                         .input-grid {
                             display: grid;
                             grid-template-columns: 1fr 1fr;
-                            gap: 10px;
+                            gap: 8px;
                         }
                     </style>
                     <input type="text" id="v-name" name="name" class="uniform-input" placeholder="Full Name" required>
-                    <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Professional Email" required>
+                    <textarea id="v-address" name="address" class="uniform-input" placeholder="Physical Address / Office Location" style="height: 60px; resize: none;" required></textarea>
+                    
+                    <div class="input-grid">
+                        <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Work Email" required>
+                        <input type="tel" id="v-phone" name="phone" class="uniform-input" placeholder="WhatsApp / Mobile" required>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <input type="text" id="v-city" name="city" class="uniform-input" placeholder="City" required>
+                        <input type="text" id="v-position" name="position" class="uniform-input" placeholder="Position / Rank" required>
+                    </div>
                     
                     <div class="input-grid">
                         <input type="text" id="v-company" name="company" class="uniform-input" placeholder="Company Name" required>
                         <input type="text" id="v-vessel" name="vessel" class="uniform-input" placeholder="Vessel Name" required>
                     </div>
                     
-                    <input type="text" id="v-code" name="voucher" class="uniform-input" style="border-color: rgba(230, 126, 34, 0.4); background: rgba(230, 126, 34, 0.02); font-weight: 800; text-align: center; font-size: 1.1rem; letter-spacing: 1px;" placeholder="ENTER CODE HERE">
+                    <input type="text" id="v-code" name="voucher" class="uniform-input" style="border-color: rgba(230, 126, 34, 0.4); background: rgba(230, 126, 34, 0.02); font-weight: 800; text-align: center; font-size: 1.1rem; letter-spacing: 2px;" placeholder="ENTER CODE HERE">
                     
-                    <button type="submit" class="btn btn-primary" style="background: #e67e22; border: none; padding: 14px; border-radius: 14px; font-weight: 800; color: white; box-shadow: 0 10px 15px rgba(230, 126, 34, 0.2); margin-top: 10px;">Claim Pro License</button>
+                    <button type="submit" class="btn btn-primary" style="background: #e67e22; border: none; padding: 12px; border-radius: 12px; font-weight: 800; color: white; box-shadow: 0 8px 20px rgba(230, 126, 34, 0.2); margin-top: 5px;">Claim Pro License</button>
                     
-                    <div style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+                    <div style="text-align: center; margin-top: 10px; font-size: 0.85rem;">
                         <span style="color: #64748b;">Don't have a code?</span> 
                         <a href="#" id="view-free-voucher-btn" style="color: #e67e22; font-weight: 700; text-decoration: underline; margin-left: 5px;">Get one for FREE →</a>
                     </div>
