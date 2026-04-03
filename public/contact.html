@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - AirCable</title>
+    <link rel="stylesheet" href="style.css?v=1.0.6">
+    <link rel="stylesheet" href="lib/inter/inter.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <style>
+        .contact-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.8);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { color: var(--primary-color); }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <a href="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to AirCable</a>
+        
+        <header style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800;">Contact Support</h1>
+            <p style="color: var(--text-secondary);">We are here to help you with sharing and subscriptions.</p>
+        </header>
+
+        <div class="contact-grid">
+            <!-- WhatsApp Card -->
+            <div class="contact-card">
+                <i class="fa-brands fa-whatsapp contact-icon" style="color: #25D366;"></i>
+                <h2>Chat with Sales</h2>
+                <p style="margin-bottom: 2rem;">Quick questions? Message our Singapore team directly.</p>
+                <a href="https://wa.me/6581962270?text=Hi%20AirCable%20Support,%20I%20have%20a%20question..." target="_blank" class="btn btn-primary" style="width: 100%; background: #25D366; border: none; padding: 1rem; font-weight: 700;">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+                </a>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-card" style="grid-column: span 1;">
+                <i class="fa-solid fa-envelope contact-icon" style="color: var(--primary-color);"></i>
+                <h2>Send an Email</h2>
+                <p style="margin-bottom: 2rem;">For business inquiries and professional licenses.</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message Area</label>
+                        <textarea id="message" class="form-textarea" rows="4" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-weight: 700;">
+                        <i class="fa-solid fa-paper-plane"></i> Send to sales@celron.net
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <footer style="margin-top: 4rem; text-align: center; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                Official Support for <b>Cel-Ron Enterprises Pte Ltd</b>.<br>
+                Singapore Business Registry: 53457582D
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            
+            // Build Mailto link
+            const subject = encodeURIComponent("AirCable Support Request - " + name);
+            const body = encodeURIComponent("Name: " + name + "\n\nMessage:\n" + message);
+            const mailtoLink = "mailto:sales@celron.net?subject=" + subject + "&body=" + body;
+            
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>
