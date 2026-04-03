@@ -67,6 +67,24 @@ function showToast(msg, duration = 3000) {
     }
 }
 
+// --- Pro / Voucher Logic ---
+let isPro = localStorage.getItem('aircable_pro_user') === 'true';
+
+function updateProUI() {
+    const badge = document.getElementById('pro-badge');
+    if (badge) {
+        badge.style.display = isPro ? 'inline-block' : 'none';
+    }
+}
+
+// Check for incoming "redeem" parameter
+if (window.location.search.includes('redeem=true')) {
+    setTimeout(() => {
+        document.getElementById('voucher-modal')?.classList.remove('hidden');
+        window.history.replaceState({}, document.title, "/"); // Clean URL
+    }, 1000);
+}
+
 // Request Notification Permission
 if ('Notification' in window && Notification.permission !== 'granted' && Notification.permission !== 'denied') {
     document.addEventListener('click', () => {
@@ -714,6 +732,56 @@ document.getElementById('secret-btn').addEventListener('click', () => {
 const helpBtn = document.getElementById('help-btn');
 const closeHelpBtn = document.getElementById('close-help-btn');
 const helpModal = document.getElementById('help-modal');
+
+if (helpBtn) helpBtn.addEventListener('click', () => helpModal.classList.remove('hidden'));
+if (closeHelpBtn) closeHelpBtn.addEventListener('click', () => helpModal.classList.add('hidden'));
+
+// --- Voucher Modal Events ---
+const redeemBtn = document.getElementById('redeem-btn');
+const voucherModal = document.getElementById('voucher-modal');
+const closeVoucherBtn = document.getElementById('close-voucher-btn');
+const voucherForm = document.getElementById('voucher-form');
+
+if (redeemBtn) redeemBtn.addEventListener('click', () => voucherModal.classList.remove('hidden'));
+if (closeVoucherBtn) closeVoucherBtn.addEventListener('click', () => voucherModal.classList.add('hidden'));
+
+if (voucherForm) {
+    voucherForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const info = {
+            name: document.getElementById('v-name').value,
+            email: document.getElementById('v-email').value,
+            phone: document.getElementById('v-phone').value,
+            company: document.getElementById('v-company').value,
+            position: document.getElementById('v-position').value,
+            code: document.getElementById('v-code').value
+        };
+
+        // Lead capture to Sales team
+        const subject = encodeURIComponent(`AirCable - Pro Voucher Claim (${info.name})`);
+        const body = encodeURIComponent(`User is claiming a Pro License Gift.\n\n` + 
+            `Name: ${info.name}\n` + 
+            `Email: ${info.email}\n` + 
+            `WhatsApp: ${info.phone}\n` + 
+            `Company: ${info.company}\n` + 
+            `Position: ${info.position}\n` + 
+            `Code Used: ${info.code}`);
+        
+        // Final Step: Set Pro Status and Success UI
+        isPro = true;
+        localStorage.setItem('aircable_pro_user', 'true');
+        updateProUI();
+        
+        const emails = "sales@celron.net,sales@arkissg.com";
+        window.location.href = `mailto:${emails}?subject=${subject}&body=${body}`;
+        
+        voucherModal.classList.add('hidden');
+        alert("Success! Your Business Voucher has been submitted to Cel-Ron Sales. Your Pro features are now UNLOCKED locally as a thank you! 🚀");
+    });
+}
+
+// Initial UI check
+updateProUI();
 
 if(helpBtn && closeHelpBtn && helpModal) {
     helpBtn.addEventListener('click', () => {

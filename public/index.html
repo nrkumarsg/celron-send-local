@@ -50,7 +50,10 @@
                     <img id="header-logo-img" src="logo.png" alt="AirCable Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; transition: transform 0.3s ease;">
                 </div>
                 <div>
-                    <h1 style="font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 0;">AirCable</h1>
+                    <h1 style="font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                        AirCable 
+                        <span id="pro-badge" class="badge" style="background: #f1c40f; font-size: 0.65rem; padding: 2px 6px; display: none;">PRO</span>
+                    </h1>
                     <span style="font-size: 0.75rem; color: #2ecc71; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-leaf"></i> No USB, Zero E-Waste</span>
                 </div>
             </div>
@@ -67,6 +70,9 @@
                 <a href="/download.html#pricing-section" class="icon-btn" title="Subscription Pricing" style="color: #f1c40f;">
                     <i class="fa-solid fa-star fa-lg"></i>
                 </a>
+                <button id="redeem-btn" class="icon-btn" title="Redeem Voucher" style="color: #e67e22;">
+                    <i class="fa-solid fa-ticket fa-lg"></i>
+                </button>
                 <div class="my-info">
                     <span id="my-name">Device Name</span>
                     <span class="status-indicator online"></span>
@@ -241,6 +247,43 @@
             </div>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">© 2026 Cel-Ron Enterprises Pte Ltd. All P2P transfers are encrypted.</p>
         </footer>
+
+        <!-- Voucher Redemption Modal -->
+        <div id="voucher-modal" class="modal-overlay hidden" style="z-index: 10001;">
+            <div class="modal" style="max-width: 500px;">
+                <div class="modal-icon" style="color: #e67e22;">
+                    <i class="fa-solid fa-ticket fa-3x"></i>
+                </div>
+                <h3 style="margin-top: 10px;">Redeem Business Voucher</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Enter your contact info to unlock a Free Lifetime Pro License.</p>
+                
+                <form id="voucher-form" style="text-align: left;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="text" id="v-name" class="form-input" placeholder="Full Name" style="width: 100%; box-sizing: border-box;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="email" id="v-email" class="form-input" placeholder="Professional Email" style="width: 100%; box-sizing: border-box;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="tel" id="v-phone" class="form-input" placeholder="WhatsApp / Phone" style="width: 100%; box-sizing: border-box;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="text" id="v-company" class="form-input" placeholder="Working Company" style="width: 100%; box-sizing: border-box;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="text" id="v-position" class="form-input" placeholder="Current Position" style="width: 100%; box-sizing: border-box;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <input type="text" id="v-code" class="form-input" placeholder="Voucher Code (e.g. GIFT2026)" style="width: 100%; font-weight: 700; border-color: #e67e22; box-sizing: border-box;" required>
+                    </div>
+                    
+                    <div class="modal-actions" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-secondary" id="close-voucher-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="background: #e67e22; border: none; font-weight: 700;">Claim Pro License</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 

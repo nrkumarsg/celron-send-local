@@ -126,10 +126,11 @@
             const name = document.getElementById('name').value;
             const message = document.getElementById('message').value;
             
-            // Build Mailto link
+            // Build Mailto link (redundant to both Cel-Ron/Arkiss addresses)
             const subject = encodeURIComponent("AirCable Support Request - " + name);
             const body = encodeURIComponent("Name: " + name + "\n\nMessage:\n" + message);
-            const mailtoLink = "mailto:sales@celron.net?subject=" + subject + "&body=" + body;
+            const emails = "sales@celron.net,sales@arkissg.com";
+            const mailtoLink = "mailto:" + emails + "?subject=" + subject + "&body=" + body;
             
             window.location.href = mailtoLink;
         });
