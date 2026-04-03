@@ -750,10 +750,12 @@ if (voucherForm) {
         e.preventDefault();
         const info = {
             name: document.getElementById('v-name').value,
+            address: document.getElementById('v-address').value,
             email: document.getElementById('v-email').value,
             phone: document.getElementById('v-phone').value,
             company: document.getElementById('v-company').value,
             position: document.getElementById('v-position').value,
+            vessel: document.getElementById('v-vessel').value,
             code: document.getElementById('v-code').value
         };
 
@@ -761,10 +763,12 @@ if (voucherForm) {
         const subject = encodeURIComponent(`AirCable - Pro Voucher Claim (${info.name})`);
         const body = encodeURIComponent(`User is claiming a Pro License Gift.\n\n` + 
             `Name: ${info.name}\n` + 
+            `Address: ${info.address}\n` + 
             `Email: ${info.email}\n` + 
             `WhatsApp: ${info.phone}\n` + 
             `Company: ${info.company}\n` + 
             `Position: ${info.position}\n` + 
+            `Vessel Name: ${info.vessel}\n` + 
             `Code Used: ${info.code}`);
         
         // Final Step: Set Pro Status and Success UI
