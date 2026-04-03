@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 app.classList.remove('hidden-app');
             }, 150);
         });
+
+        // --- Voucher Modal Logic ---
+        const openVoucherBtn = document.getElementById('open-voucher-btn');
+        const voucherModal = document.getElementById('voucher-modal');
+        if (openVoucherBtn && voucherModal) {
+            openVoucherBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                voucherModal.classList.remove('hidden');
+            });
+        }
     }
 
     // --- Tabs switching logic ---
