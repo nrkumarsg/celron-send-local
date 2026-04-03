@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Direct Start Parameter Check (?start=true)
         if (window.location.search.includes('start=true')) {
-            landingOverlay.classList.add('hidden-landing');
-            appContainer.classList.remove('hidden-app');
+            landing.style.opacity = '0';
+            setTimeout(() => {
+                landing.style.display = 'none';
+                app.classList.remove('hidden-app');
+            }, 10); // Minimal delay for instant feel
+            window.history.replaceState({}, document.title, "/");
         }
 
         if (openVoucherBtn && voucherModal) {
@@ -109,8 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(err => console.error('Share fetch error:', err));
             
-        // Clean URL to prevent re-share on reload
+        // Clean URL to prevent re-triggering on manual reload
         window.history.replaceState({}, document.title, "/");
+
+        // --- Back to Home Logic ---
+        const backHomeBtn = document.getElementById('back-to-home');
+        if (backHomeBtn) {
+            backHomeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                landing.style.display = 'flex';
+                setTimeout(() => {
+                    landing.style.opacity = '1';
+                    app.classList.add('hidden-app');
+                }, 10);
+            });
+        }
     }
 });
 
