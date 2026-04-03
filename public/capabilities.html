@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Capabilities - AirCable Industrial P2P</title>
+    <link rel="stylesheet" href="style.css?v=1.0.6">
+    <link rel="stylesheet" href="lib/inter/inter.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <style>
+        .cap-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .tech-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 1.5rem;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="cap-container">
+        <header style="margin-bottom: 3rem; text-align: center;">
+            <a href="/" style="display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); text-decoration: none; font-weight: 700; margin-bottom: 2rem; transition: color 0.2s ease;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-secondary)'">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+            <div style="background: radial-gradient(circle, rgba(46, 204, 113, 0.15) 0%, transparent 70%); border-radius: 50%; padding: 15px; display: inline-block; margin-bottom: 1rem;">
+                <img src="logo.png" alt="AirCable Logo" style="width: 100px; height: 100px; object-fit: contain;">
+            </div>
+            <h1 style="font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 0.5rem;">Enterprise Capabilities</h1>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-weight: 500;">Powering the world's most resilient maritime and industrial file transfers.</p>
+        </header>
+
+        <!-- Connectivity Section -->
+        <section style="margin-bottom: 4rem;">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: center; gap: 12px; color: var(--text-primary);">
+                <i class="fa-solid fa-microchip" style="color: var(--primary-color);"></i> 4-Level Connectivity Matrix
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                <div class="tech-card">
+                    <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary-color); display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-wifi"></i> 1. Same WiFi (Local P2P)</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">Powered by <b>WebRTC Direct Data Channels</b>. Transfers happen strictly over your local router/hotspot at maximum speed. No cloud interaction ensures 100% data privacy for sensitive mission-critical documents.</p>
+                </div>
+
+                <div class="tech-card">
+                    <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: #6366f1; display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-network-wired"></i> 2. Different Networks (Relay)</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">Utilizes <b>STUN/TURN Bypass</b>. This allows devices on separate networks, or behind restrictive corporate firewalls, to pair and share securely. Perfect for Ship-to-Shore communication where network conditions vary.</p>
+                </div>
+
+                <div class="tech-card">
+                    <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: #ec4899; display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-globe"></i> 3. Global Device Connection</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">Orchestrated via <b>Socket.io Real-time Signalling</b>. Devices can be identified globally across 4G/5G, Starlink, or standard ISP networks, enabling seamless pairing with a simple 4-digit security code.</p>
+                </div>
+
+                <div class="tech-card" style="border: 2px solid var(--eco-green); background: rgba(46, 204, 113, 0.02);">
+                    <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--eco-green); display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-shield-halved"></i> 4. Offline Air-Gap Mode</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">Designed for the deepest engine rooms and 1,000 miles offshore. Functions via <b>Private Portable Hotspots</b> with ZERO internet required. 100% secure, 100% offline.</p>
+                    <div style="background: rgba(46, 204, 113, 0.08); padding: 15px; border-radius: 12px; font-size: 0.9rem; border: 1px dashed var(--eco-green);">
+                        <i class="fa-solid fa-circle-down"></i> For stable offshore usage: <a href="/download.html" style="color: var(--eco-green); font-weight: 800; text-decoration: underline;">Download the AirCable APK →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advantange Section -->
+        <section style="background: var(--card-bg); padding: 40px; border-radius: 24px; border: 1.5px solid var(--border-color); margin-bottom: 4rem;">
+            <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 2rem; color: var(--primary-color); display: flex; align-items: center; gap: 12px;">
+                <i class="fa-solid fa-anchor"></i> Maritime Advantage
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 1rem; color: #64748b;"><i class="fa-solid fa-satellite-dish"></i></div>
+                    <h4 style="margin-bottom: 8px; font-weight: 700;">No Starlink Needed</h4>
+                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">Save thousands in expensive satellite data. Transfer 10GB or 100GB at Zero cost.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 1rem; color: #64748b;"><i class="fa-solid fa-tower-broadcast"></i></div>
+                    <h4 style="margin-bottom: 8px; font-weight: 700;">Zero 4G/LTE Needed</h4>
+                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">Works in deep international waters. No cellular coverage required for local P2P.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 1rem; color: #64748b;"><i class="fa-solid fa-user-shield"></i></div>
+                    <h4 style="margin-bottom: 8px; font-weight: 700;">Enterprise Privacy</h4>
+                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">Data never touches a cloud server. Files stay strictly within the vessel network.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; border-top: 1px solid #e2e8f0; padding-top: 30px; margin-top: 50px;">
+            <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; font-weight: 700;">
+                <a href="/?start=true" style="color: var(--primary-color); text-decoration: none;">Start Sharing</a>
+                <a href="/download.html" style="color: var(--text-secondary); text-decoration: none;">Download Center</a>
+                <a href="/contact.html" style="color: var(--text-secondary); text-decoration: none;">Support</a>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">© 2026 Cel-Ron Enterprises Pte Ltd, Singapore</p>
+        </footer>
+    </div>
+</body>
+</html>

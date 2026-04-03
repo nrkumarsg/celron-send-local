@@ -75,7 +75,12 @@
             <p class="landing-subtitle" style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 600;"><i class="fa-solid fa-leaf" style="color: var(--eco-green);"></i> No USB. Zero E-Waste.</p>
 
             <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 650px; margin: 0 auto;">
-                <!-- 1. Start Sharing (Primary) -->
+                <!-- 1. Enterprise Capabilities Explorer -->
+                <a href="/capabilities.html" class="btn" style="width: 100%; border: 2px solid #6366f1; color: #6366f1; font-weight: 800; border-radius: 16px; padding: 1.25rem; background: rgba(99, 102, 241, 0.05); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.2s ease; box-sizing: border-box;" onmouseover="this.style.background='rgba(99, 102, 241, 0.1)'; this.style.transform='scale(1.01)'" onmouseout="this.style.background='rgba(99, 102, 241, 0.05)'; this.style.transform='scale(1)'">
+                    <i class="fa-solid fa-microchip"></i> Explore 4 Transfer Technologies <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
+                </a>
+
+                <!-- 2. Start Sharing (Primary) -->
                 <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.2rem; padding: 1.25rem; border-radius:16px; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(0, 92, 230, 0.2);">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:10px;"></i></button>
                 
                 <!-- 2. Download Center -->
@@ -98,6 +103,7 @@
                         <i class="fa-solid fa-ticket fa-lg"></i> Have a Cel-Ron voucher? <span style="text-decoration: underline;">Click here to Register & Unlock your Lifetime Pro License →</span>
                     </a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -300,67 +306,12 @@
             </div>
         </div>
 
-
-        <!-- Advanced Technology Section -->
-        <section class="tech-section" style="margin-top: 3rem; padding: 2.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-lg); text-align: left; width: 100%; box-sizing: border-box;">
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary);"><i class="fa-solid fa-microchip" style="margin-right:10px; color: var(--primary-color);"></i> Advanced Connectivity Technology</h2>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: 10px auto;">How AirCable powers your maritime and enterprise file transfers across any environment.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-                <!-- Mode 1 -->
-                <div class="tech-card" style="padding: 1.5rem; border-radius: var(--radius-md); background: white; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                    <h4 style="margin-bottom: 0.8rem; color: var(--primary-color); display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-wifi"></i> Same WiFi (Local P2P)</h4>
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Uses <b>WebRTC Direct Data Channels</b>. Files transfer locally at high-speed router bandwidth without ever touching the cloud. Maximum privacy for sensitive documents.</p>
-                </div>
-                <!-- Mode 2 -->
-                <div class="tech-card" style="padding: 1.5rem; border-radius: var(--radius-md); background: white; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                    <h4 style="margin-bottom: 0.8rem; color: #6366f1; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-network-wired"></i> Different Networks (Relay)</h4>
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Uses <b>STUN/TURN Bypass</b>. Connects devices across different ISPs or behind corporate firewalls. Reliable Ship-to-Shore transfers even on restricted networks.</p>
-                </div>
-                <!-- Mode 3 -->
-                <div class="tech-card" style="padding: 1.5rem; border-radius: var(--radius-md); background: white; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                    <h4 style="margin-bottom: 0.8rem; color: #ec4899; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-globe"></i> Global Device Connection</h4>
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Powered by <b>Socket.io Real-time Signalling</b>. Identifies devices globally across 4G/5G, Starlink, and Cellular networks for a seamless global connection experience.</p>
-                </div>
-                <!-- Mode 4 -->
-                <div class="tech-card" style="padding: 1.5rem; border-radius: var(--radius-md); background: white; border: 1.8px solid var(--eco-green); box-shadow: 0 4px 12px rgba(46, 204, 113, 0.1);">
-                    <h4 style="margin-bottom: 0.8rem; color: var(--eco-green); display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-shield-halved"></i> Offline Air-Gap Mode</h4>
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 12px;">Works 100% offline via <b>Private Portable Hotspots</b>. Functions with NO Internet or Satellite connection required. Perfect for engine rooms and international waters.</p>
-                    <div style="background: rgba(46, 204, 113, 0.05); padding: 10px; border-radius: 8px; font-size: 0.8rem; border: 1px dashed var(--eco-green); text-align: left;">
-                        <i class="fa-solid fa-circle-down"></i> <b>Permanent Usage:</b> For frequent and stable use offshore, please <a href="/download.html" style="color: var(--eco-green); font-weight: 700; text-decoration: underline;">Download the AirCable APK</a> for your phone from our <b>Download Center</b>.
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 92, 230, 0.05); border-radius: var(--radius-lg); border: 2px dashed var(--primary-color);">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary-color); text-align: center;"><i class="fa-solid fa-anchor"></i> The Mid-Sea Maritime Advantage</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
-                    <div>
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-satellite-dish" style="color: #666;"></i></div>
-                        <h4 style="font-size: 1rem; margin-bottom: 5px;">No Starlink Needed</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Save thousands on expensive satellite data. Transfer 10GB or 100GB at Zero cost.</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-tower-broadcast" style="color: #666;"></i></div>
-                        <h4 style="font-size: 1rem; margin-bottom: 5px;">No 4G/LTE Needed</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Works 1,000 miles offshore in deep international waters with zero signal.</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-user-shield" style="color: #666;"></i></div>
-                        <h4 style="font-size: 1rem; margin-bottom: 5px;">Complete Privacy</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Files never pass through a cloud server. Data stays strictly on the vessel.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Professional Footer Links -->
         <footer style="margin-top: 30px; padding: 20px; text-align: center; border-top: 1px solid var(--border-color); width: 100%;">
             <div style="display: flex; justify-content: center; gap: 30px; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">
-                <a href="/download.html" style="color: var(--primary-color); text-decoration: none;"><i class="fa-solid fa-mobile-screen"></i> Download App</a>
-                <a href="/download.html#pricing-section" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-credit-card"></i> Pricing & Subscriptions</a>
+                <a href="/capabilities.html" style="color: var(--primary-color); text-decoration: none;"><i class="fa-solid fa-microchip"></i> Capabilities</a>
+                <a href="/download.html" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-mobile-screen"></i> Download App</a>
+                <a href="/download.html#pricing-section" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-credit-card"></i> Pricing</a>
                 <a href="/contact.html" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-envelope"></i> Contact Support</a>
             </div>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">© 2026 Cel-Ron Enterprises Pte Ltd. All P2P transfers are encrypted.</p>

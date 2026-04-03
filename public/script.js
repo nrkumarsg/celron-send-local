@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const voucherModal = document.getElementById('voucher-modal');
         const voucherForm = document.getElementById('voucher-form');
 
+        // Direct Start Parameter Check (?start=true)
+        if (window.location.search.includes('start=true')) {
+            landingOverlay.classList.add('hidden-landing');
+            appContainer.classList.remove('hidden-app');
+        }
+
         if (openVoucherBtn && voucherModal) {
             openVoucherBtn.addEventListener('click', (e) => {
                 e.preventDefault();
