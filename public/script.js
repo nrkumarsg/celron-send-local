@@ -771,16 +771,29 @@ if (voucherForm) {
             `Vessel Name: ${info.vessel}\n` + 
             `Code Used: ${info.code}`);
         
-        // Final Step: Set Pro Status and Success UI
-        isPro = true;
-        localStorage.setItem('aircable_pro_user', 'true');
-        updateProUI();
-        
-        const emails = "sales@celron.net,sales@arkissg.com";
-        window.location.href = `mailto:${emails}?subject=${subject}&body=${body}`;
-        
-        voucherModal.classList.add('hidden');
-        alert("Success! Your Business Voucher has been submitted to Cel-Ron Sales. Your Pro features are now UNLOCKED locally as a thank you! 🚀");
+        // Validation Logic
+        const validCodes = ['CELRON-PRO-2026', 'CELRON-PRO', 'GIFT-2026'];
+        const isCodeValid = validCodes.includes(info.code.toUpperCase());
+
+        if (isCodeValid) {
+            // Final Step: Set Pro Status and Success UI
+            isPro = true;
+            localStorage.setItem('aircable_pro_user', 'true');
+            updateProUI();
+            
+            const emails = "sales@celron.net,sales@arkissg.com";
+            window.location.href = `mailto:${emails}?subject=${subject}&body=${body}`;
+            
+            voucherModal.classList.add('hidden');
+            alert("Voucher Validated! Your Lifetime Pro License is now UNLOCKED 🚀\n\nYour contact info has been sent to our sales team for record.");
+        } else {
+            // Still send the lead but don't unlock yet
+            const emails = "sales@celron.net,sales@arkissg.com";
+            window.location.href = `mailto:${emails}?subject=${subject}&body=${body}`;
+            
+            voucherModal.classList.add('hidden');
+            alert("Your request has been submitted to Cel-Ron Sales. Our team will verify your voucher code and contact you shortly! 🏆");
+        }
     });
 }
 
