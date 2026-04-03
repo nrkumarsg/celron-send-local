@@ -2,6 +2,12 @@
   "name": "aircable-corporate-gift",
   "version": "1.0.0",
   "description": "Branded P2P file sharing gift by Cel-Ron Enterprises",
+  "author": "Cel-Ron Enterprises Pte Ltd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nrkumarsg/celron-send-local.git"
+  },
   "main": "main.js",
   "scripts": {
     "start": "node server.js",
