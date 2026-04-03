@@ -114,10 +114,31 @@
 
         <footer style="margin-top: 4rem; text-align: center; border-top: 1px solid var(--border-color); padding-top: 2rem;">
             <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                Official Support for <b>Cel-Ron Enterprises Pte Ltd</b>.<br>
-                Singapore Business Registry: 53457582D
+                Official Support for <b>Cel-Ron Enterprises Pte Ltd</b>.
             </p>
         </footer>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thank-you-modal" class="modal-overlay hidden" style="z-index: 10001; background: rgba(255,255,255,0.9);">
+        <div class="modal" style="max-width: 450px; border: 2px solid var(--eco-green);">
+            <div class="modal-icon" style="color: var(--eco-green);">
+                <i class="fa-solid fa-circle-check fa-4x"></i>
+            </div>
+            <h2 style="font-weight: 800; margin-top: 20px;">Thank You!</h2>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                Your support request has been prepared. <br>
+                <b>Please click "Send" in the email app</b> that just opened on your device.
+            </p>
+            <div class="modal-actions">
+                <button onclick="window.location.href='/'" class="btn btn-primary" style="background: var(--eco-green); border: none; width: 100%; padding: 1rem; font-weight: 700;">
+                    Return to AirCable
+                </button>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 15px;">
+                Directly sent to: sales@celron.net / sales@arkissg.com
+            </p>
+        </div>
     </div>
 
     <script>
@@ -132,6 +153,10 @@
             const emails = "sales@celron.net,sales@arkissg.com";
             const mailtoLink = "mailto:" + emails + "?subject=" + subject + "&body=" + body;
             
+            // Show Thank You Modal
+            document.getElementById('thank-you-modal').classList.remove('hidden');
+            
+            // Launch Email App
             window.location.href = mailtoLink;
         });
     </script>
