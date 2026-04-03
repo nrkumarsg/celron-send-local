@@ -33,7 +33,7 @@ dependencies:
 
   # --- AirCable Essentials ---
   socket_io_client: ^2.0.3
-  flutter_webrtc: ^0.9.48
+  flutter_webrtc: ^0.12.3
   file_picker: ^8.0.0
   path_provider: ^2.1.2
   qr_flutter: ^4.1.0
