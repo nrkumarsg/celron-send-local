@@ -24,27 +24,44 @@
                 <style>
                     .uniform-input {
                         width: 100%;
-                        padding: 15px 20px;
-                        border: 2px solid #e2e8f0;
-                        border-radius: 14px;
-                        font-size: 1rem;
+                        padding: 12px 18px;
+                        border: 1.5px solid #e2e8f0;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
                         font-family: 'Inter', sans-serif;
                         transition: all 0.2s ease;
                         box-sizing: border-box;
+                        background: #f8fafc;
                     }
                     .uniform-input:focus {
                         outline: none;
                         border-color: #e67e22;
+                        background: #fff;
                         box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1);
+                    }
+                    .input-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 12px;
                     }
                 </style>
                 <input type="text" id="v-name" name="name" class="uniform-input" placeholder="Full Name" required>
-                <input type="text" id="v-vessel" name="vessel" class="uniform-input" placeholder="Vessel / Company Name" required>
-                <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Your Business Email" required>
-                <input type="text" id="v-code" name="voucher" class="uniform-input" placeholder="Voucher Number (Optional)">
-                <div style="display: flex; gap: 10px; margin-top: 15px;">
-                    <button type="button" class="btn" style="flex: 1; border: 1px solid #cbd5e1; background: #fff; padding: 12px; border-radius: 12px; font-weight: 600;" onclick="document.getElementById('voucher-modal').classList.add('hidden')">Cancel</button>
-                    <button type="submit" class="btn btn-primary" style="flex: 2; background: #e67e22; border: none; padding: 12px; border-radius: 12px; font-weight: 700; color: white;">Claim Pro License</button>
+                <textarea id="v-address" name="address" class="uniform-input" placeholder="Physical Address / Office Location" style="height: 70px; resize: none;" required></textarea>
+                <input type="email" id="v-email" name="email" class="uniform-input" placeholder="Professional Email" required>
+                <input type="tel" id="v-phone" name="phone" class="uniform-input" placeholder="WhatsApp / Mobile Number" required>
+                
+                <div class="input-grid">
+                    <input type="text" id="v-city" name="city" class="uniform-input" placeholder="City" required>
+                    <input type="text" id="v-position" name="position" class="uniform-input" placeholder="Position / Rank" required>
+                </div>
+                
+                <input type="text" id="v-company" name="company" class="uniform-input" placeholder="Company Name" required>
+                <input type="text" id="v-vessel" name="vessel" class="uniform-input" placeholder="Vessel Name (N.A if None)" required>
+                <input type="text" id="v-code" name="voucher" class="uniform-input" style="border-color: rgba(230, 126, 34, 0.4); background: rgba(230, 126, 34, 0.02); font-weight: 700;" placeholder="Voucher Code (e.g. CELRON2026)">
+                
+                <div style="display: flex; gap: 12px; margin-top: 15px;">
+                    <button type="button" class="btn" style="flex: 1; border: 1.5px solid #cbd5e1; background: #fff; padding: 14px; border-radius: 14px; font-weight: 700; color: #64748b;" onclick="document.getElementById('voucher-modal').classList.add('hidden')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 2; background: #e67e22; border: none; padding: 14px; border-radius: 14px; font-weight: 800; color: white; box-shadow: 0 10px 15px rgba(230, 126, 34, 0.2);">Claim Pro License</button>
                 </div>
             </form>
         </div>

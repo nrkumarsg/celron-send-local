@@ -19,10 +19,55 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Voucher Modal Logic ---
         const openVoucherBtn = document.getElementById('open-voucher-btn');
         const voucherModal = document.getElementById('voucher-modal');
+        const voucherForm = document.getElementById('voucher-form');
+
         if (openVoucherBtn && voucherModal) {
             openVoucherBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 voucherModal.classList.remove('hidden');
+            });
+        }
+
+        if (voucherForm && voucherModal) {
+            voucherForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get all professional fields
+                const name = document.getElementById('v-name')?.value || 'N/A';
+                const addr = document.getElementById('v-address')?.value || 'N/A';
+                const email = document.getElementById('v-email')?.value || 'N/A';
+                const phone = document.getElementById('v-phone')?.value || 'N/A';
+                const city = document.getElementById('v-city')?.value || 'N/A';
+                const rank = document.getElementById('v-position')?.value || 'N/A';
+                const comp = document.getElementById('v-company')?.value || 'N/A';
+                const vessel = document.getElementById('v-vessel')?.value || 'N/A';
+                const code = document.getElementById('v-code')?.value || 'PRO2026';
+
+                // Construct Multi-Recipient Maritime Report
+                const subject = `AirCable Pro License Registration: ${vessel}`;
+                const body = `--- AIR-CABLE PRO REGISTRATION REPORT ---\n\n` +
+                             `Name: ${name}\n` +
+                             `Position/Rank: ${rank}\n` +
+                             `Company: ${comp}\n` +
+                             `Vessel: ${vessel}\n` +
+                             `Email: ${email}\n` +
+                             `Phone: ${phone}\n` +
+                             `Address: ${addr}, ${city}\n` +
+                             `Voucher Code: ${code}\n\n` +
+                             `------------------------------------------\n` +
+                             `Sent from AirCable Industrial PWA`;
+
+                const mailto = `mailto:sales@celron.net,sales@arkissg.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailto;
+
+                // Unlock Pro Badge Locally
+                localStorage.setItem('aircable_pro_user', 'true');
+                isPro = true;
+                updateProUI();
+                
+                // Success feedback and close
+                voucherModal.classList.add('hidden');
+                showToast("Voucher Report Sent! Pro License Unlocked.", 5000);
             });
         }
     }
