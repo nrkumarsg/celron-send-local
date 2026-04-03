@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download AirCable - Official App</title>
+    <link rel="stylesheet" href="style.css?v=1.0.5">
+    <link rel="stylesheet" href="lib/inter/inter.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <style>
+        .download-center {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .platform-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .platform-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        .android-icon { color: #3DDC84; }
+        .windows-icon { color: #0078D7; }
+        
+        .inst-box {
+            background: rgba(0,0,0,0.03);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+            width: 100%;
+        }
+        .inst-box h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .inst-box ol {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .inst-box li {
+            margin-bottom: 8px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { color: var(--primary-color); }
+
+        /* Pricing Styles */
+        .pricing-section {
+            margin-top: 5rem;
+            text-align: center;
+        }
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 92, 230, 0.15);
+        }
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            color: var(--text-primary);
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .features-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .features-list i { color: var(--eco-green); }
+        .badge-pro {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-center">
+        <a href="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Web App</a>
+        
+        <header style="text-align: center; margin-bottom: 3rem;">
+            <img src="logo.png" style="width: 100px; margin-bottom: 1rem;" alt="AirCable">
+            <h1 style="font-size: 2.5rem; font-weight: 800;">AirCable Download Center</h1>
+            <p style="font-size: 1.2rem; color: var(--text-secondary);">High-speed P2P sharing, now native on all your devices.</p>
+        </header>
+
+        <div class="platform-grid">
+            <!-- Android Card -->
+            <div class="platform-card">
+                <i class="fa-brands fa-android platform-icon android-icon"></i>
+                <h2>Android App</h2>
+                <p>Best for "One-Touch" gallery sharing and native performance.</p>
+                
+                <a href="/download/AirCable.apk" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;" download>
+                    <i class="fa-solid fa-download"></i> Download APK (Stable)
+                </a>
+
+                <div class="inst-box">
+                    <h4><i class="fa-solid fa-circle-info"></i> Installation Guide</h4>
+                    <ol>
+                        <li>Download the <b>AirCable.apk</b> file to your phone.</li>
+                        <li>Tap the file to open it. If prompted, go to <b>Settings</b> and enable "Allow from this source".</li>
+                        <li>Click <b>Install</b> and launch the app from your home screen.</li>
+                        <li>Enjoy sharing directly from your Gallery!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Windows Card -->
+            <div class="platform-card">
+                <i class="fa-brands fa-windows platform-icon windows-icon"></i>
+                <h2>Windows PC</h2>
+                <p>Perfect for heavy file transfers and mid-sea offline usage.</p>
+                
+                <a href="/download/AirCable-Windows.zip" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;" download>
+                    <i class="fa-solid fa-file-zipper"></i> Download for Windows
+                </a>
+
+                <div class="inst-box">
+                    <h4><i class="fa-solid fa-circle-info"></i> How to Use</h4>
+                    <ol>
+                        <li>Download the ZIP archive and extract it to a folder.</li>
+                        <li>Double-click <b>AirCable.exe</b> to start the service.</li>
+                        <li>Your laptop name will appear instantly to nearby mobile users.</li>
+                        <li>Supports Drag & Drop for lightning-fast sharing.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <h2 style="font-size: 2rem; font-weight: 800;">Choose Your Edition</h2>
+            <p style="color: var(--text-secondary);">Everything for individuals, more for business.</p>
+
+            <div class="pricing-grid">
+                <!-- Free Edition -->
+                <div class="pricing-card">
+                    <h3>Free Edition</h3>
+                    <div class="price-tag">$0</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">For personal eco-friendly sharing.</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Unlimited Local P2P</li>
+                        <li><i class="fa-solid fa-check"></i> 50MB Relay Cap</li>
+                        <li><i class="fa-solid fa-check"></i> 24h Transfer History</li>
+                        <li><i class="fa-solid fa-check"></i> Community Support</li>
+                    </ul>
+                    <a href="/" class="btn" style="width: 100%; border: 1px solid var(--border-color); color: var(--text-primary); font-weight: 700; border-radius: 10px;">Already Included</a>
+                </div>
+
+                <!-- Pro Edition -->
+                <div class="pricing-card featured">
+                    <span class="badge-pro">Most Popular</span>
+                    <h3>Pro License</h3>
+                    <div class="price-tag">$19.90</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">One-time payment. Lifetime use.</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+                        <li><i class="fa-solid fa-crown" style="color: #FFD700;"></i> <b>Unlimited Relay Size</b></li>
+                        <li><i class="fa-solid fa-crown" style="color: #FFD700;"></i> <b>Lifetime Local History</b></li>
+                        <li><i class="fa-solid fa-crown" style="color: #FFD700;"></i> <b>Custom Device Branding</b></li>
+                        <li><i class="fa-solid fa-check"></i> Priority Email Support</li>
+                    </ul>
+                    <a href="http://www.celron.shop" target="_blank" class="btn btn-primary" style="width: 100%; border-radius: 10px; font-weight: 700; padding: 12px;">Get Pro License <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="pricing-card" style="background: rgba(46, 204, 113, 0.03); border: 1px dashed var(--eco-green);">
+                    <h3>Enterprise</h3>
+                    <div class="price-tag">Custom</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">For heavy industrial/ship fleets.</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-building"></i> Fully White-Labeled</li>
+                        <li><i class="fa-solid fa-shield"></i> On-Premise Relay Server</li>
+                        <li><i class="fa-solid fa-users"></i> Multi-User Management</li>
+                    </ul>
+                    <a href="mailto:info@celron.net" class="btn" style="width: 100%; border: 1px solid var(--eco-green); color: var(--eco-green); font-weight: 700; border-radius: 10px;">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 4rem; text-align: center; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                <i class="fa-solid fa-shield-halved"></i> All downloads are secure and virus-free. <br>
+                A professional utility gifted by <b>Cel-Ron Enterprises Pte Ltd</b>.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

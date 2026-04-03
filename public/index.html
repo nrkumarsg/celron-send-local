@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirCable Local P2P</title>
+    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <link rel="stylesheet" href="lib/inter/inter.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2ecc71">
+</head>
+<body>
+    <!-- Landing Page (Sponsor Wrap) -->
+    <div id="landing-page" class="landing-page">
+        <div class="landing-content" style="max-width: 750px; padding: 2rem;">
+            <img src="logo.png" alt="AirCable Logo" class="landing-logo" style="width: 220px; height: 220px; margin: 0 auto; border-radius: 20px; display: block; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+            <h1 class="landing-title" style="font-size: 2.5rem; margin-top: 20px; font-weight: 800;">AirCable</h1>
+            <p class="landing-subtitle" style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 600;"><i class="fa-solid fa-leaf" style="color: var(--eco-green);"></i> No USB. Zero E-Waste.</p>
+
+            <!-- White-Label B2B Sponsor Block -->
+            <div style="background: rgba(46, 204, 113, 0.08); padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px dashed rgba(46, 204, 113, 0.3);">
+                <p style="color: var(--text-secondary); margin: 0 0 10px 0; font-size: 0.95rem; font-weight: 600;">🎁 A Gift from Cel-Ron Enterprises Pte Ltd, Singapore</p>
+                
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">
+                    <a href="http://www.celron.shop" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 8px;">www.celron.shop</a> | 
+                    <a href="http://www.celron.net" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 8px;">www.celron.net</a>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 400px; margin: 0 auto;">
+                <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.1rem; padding: 1.1rem; border-radius:14px; font-weight: 700;">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:8px;"></i></button>
+                
+                <a href="/download.html" class="btn" style="width: 100%; font-size: 0.95rem; padding: 0.9rem; border-radius:14px; background: rgba(0, 92, 230, 0.08); color: var(--primary-color); text-decoration: none; border: 1px solid rgba(0, 92, 230, 0.2); font-weight: 700; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-mobile-screen-button" style="margin-right:8px;"></i> Download Mobile & Desktop <i class="fa-solid fa-chevron-right" style="margin-left:5px; font-size:0.7rem;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="paste-toast" class="hidden"><i class="fa-solid fa-paperclip"></i> Paste ready!</div>
+    <div class="app-container hidden-app" id="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <div style="background: radial-gradient(circle, rgba(46, 204, 113, 0.2) 0%, transparent 70%); border-radius: 50%; padding: 5px; margin-right: 0;">
+                    <img id="header-logo-img" src="logo.png" alt="AirCable Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; transition: transform 0.3s ease;">
+                </div>
+                <div>
+                    <h1 style="font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 0;">AirCable</h1>
+                    <span style="font-size: 0.75rem; color: #2ecc71; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-leaf"></i> No USB, Zero E-Waste</span>
+                </div>
+            </div>
+            <div class="header-right" style="display: flex; align-items: center; gap: 1rem;">
+                <button id="secret-btn" class="icon-btn" title="Join Secret Room">
+                    <i class="fa-solid fa-key fa-lg"></i>
+                </button>
+                <button id="help-btn" class="icon-btn" title="How to Use">
+                    <i class="fa-solid fa-circle-question fa-lg"></i>
+                </button>
+                <a href="/download.html" class="icon-btn" title="Download Native Apps" style="color: var(--eco-green);">
+                    <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
+                </a>
+                <a href="/download.html#pricing-section" class="icon-btn" title="Subscription Pricing" style="color: #f1c40f;">
+                    <i class="fa-solid fa-star fa-lg"></i>
+                </a>
+                <div class="my-info">
+                    <span id="my-name">Device Name</span>
+                    <span class="status-indicator online"></span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Sidebar for Info and QR -->
+            <aside class="sidebar">
+                <div class="card network-info-card">
+                    <h3>Receive Files</h3>
+                    <p>Connect to this local address to send files to this device:</p>
+                    <div class="qr-container">
+                        <img id="qr-code" src="" alt="Scan to connect" />
+                    </div>
+                    <div class="url-badge" id="url-badge-container" title="Click to copy link">
+                        <i class="fa-solid fa-link"></i>
+                        <span id="local-url">Loading...</span>
+                        <i class="fa-regular fa-copy" id="copy-icon"></i>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Area for Peers & Transfer -->
+            <section class="transfer-area">
+                <div class="card peers-card">
+                    <div class="card-header" style="position: relative;">
+                        <h2>Nearby Devices <span class="badge" id="peer-count">0</span></h2>
+                        <div id="duplicate-node-hint" class="duplicate-warning hidden" style="position: absolute; right: 0; bottom: -20px; border: none; background: transparent; padding: 0; margin: 0; font-style: italic;">
+                            <i class="fa-solid fa-circle-info"></i> More icons for same device? Close extra tabs to clear.
+                        </div>
+                        <button id="refresh-btn" class="icon-btn" title="Refresh Devices">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="peers-list" class="peers-grid" style="margin-top: 25px;">
+                        <div class="empty-state">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                            <p>Looking for nearby devices...</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Block 3: Transfers & Services (Full Width) -->
+        <div class="card transfers-card" style="width: 100%;">
+            <div class="card-header tabs-header" style="border-bottom: 2px solid var(--border-color); padding-bottom: 0; margin-bottom: 1rem; display: flex; gap: 1.5rem; overflow-x: auto; white-space: nowrap;">
+                <button class="tab-btn active" data-tab="active-tab">Active Transfers</button>
+                <button class="tab-btn" data-tab="history-tab">History</button>
+                <button class="tab-btn" data-tab="services-tab" style="color: var(--eco-green);"><i class="fa-solid fa-star" style="font-size:0.8rem; margin-right:5px;"></i> Our Services</button>
+            </div>
+            
+            <div id="active-tab" class="tab-content active">
+                <div id="transfers-list" class="transfers-list">
+                    <!-- Transfer Items appear here -->
+                </div>
+            </div>
+            
+            <div id="history-tab" class="tab-content" style="display: none;">
+                <div id="history-list" class="transfers-list">
+                    <div class="empty-state" style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                        <i class="fa-solid fa-clock-rotate-left fa-2x" style="margin-bottom:1rem; opacity:0.5;"></i>
+                        <p>No completed transfers yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="services-tab" class="tab-content" style="display: none;">
+                <div style="text-align: center; cursor: pointer; padding: 25px 0;">
+                    <a href="flyer.jpg" target="_blank" download="Cel-Ron_Services_Flyer.jpg" title="Click to View Full Size & Download">
+                        <div style="position: relative; display: inline-block; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);" onmouseover="this.style.transform='scale(1.02) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+                            <img src="flyer.jpg" alt="Cel-Ron Services Flyer" style="width: 100%; max-width: 500px; display: block;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white; text-align: left; opacity: 0; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                                <p style="margin: 0; font-size: 0.85rem; font-weight: 600;"><i class="fa-solid fa-download" style="margin-right: 8px;"></i> Click to Download Flyer</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden File Input for non-drag-and-drop -->
+        <input type="file" id="file-input" style="display: none;" multiple accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+
+        <!-- Action Overlay (Send Request / Accept Request) -->
+        <div id="transfer-modal" class="modal-overlay hidden">
+            <div class="modal">
+                <div class="modal-icon text-primary">
+                    <i class="fa-solid fa-file-arrow-down fa-3x"></i>
+                </div>
+                <h3 id="modal-title">Incoming File</h3>
+                <p id="modal-desc">Someone wants to send you a file.</p>
+                <div class="file-preview-mini">
+                    <i class="fa-solid fa-file"></i>
+                    <span id="modal-filename">filename.pdf</span>
+                    <span class="file-size" id="modal-filesize">(2.4 MB)</span>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="btn-reject">Decline</button>
+                    <button class="btn btn-primary" id="btn-accept">Accept</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Manual Modal -->
+        <div id="help-modal" class="modal-overlay hidden" style="z-index: 10000;">
+            <div class="modal" style="max-width: 650px; max-height: 90vh; overflow-y: auto;">
+                <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-book-open text-primary"></i> AirCable Manual</h3>
+                    <button id="close-help-btn" class="icon-btn" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: left; font-size: 0.95rem; line-height: 1.6;">
+                    
+                    <h4 style="color: var(--primary-color); margin-top: 0;"><i class="fa-solid fa-wifi"></i> 1. How to Connect</h4>
+                    <p style="margin-bottom:1.5rem; color: var(--text-primary);">Ensure both devices (phones, laptops, etc.) are connected to the <strong>same Wi-Fi network</strong> or Local Hotspot. Simply open the app and they will securely find each other. Transfers happen instantly over your router.</p>
+
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-id-card"></i> 2. Renaming Your Device</h4>
+                    <p style="margin-bottom:1.5rem; color: var(--text-primary);">In the top right corner, your device will be given a random network name (like <code>Desktop 1234</code>). <strong>You must click this name to rename it (e.g., "Chief Engineer Laptop").</strong> This ensures your colleagues don't accidentally send confidential files to the wrong person on the network!</p>
+
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-globe"></i> 3. Global Sharing (Different Networks)</h4>
+                    <p style="margin-bottom:1.5rem; color: var(--text-primary);">If you have internet access and want to send files to someone far away, click the <strong><i class="fa-solid fa-key" style="color:#666;"></i> Key Icon</strong> at the top right. Agree on a 4-digit code with the receiver (e.g., "5555"). When both of you enter it, your devices will pair securely across the internet.</p>
+
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-anchor"></i> 4. Mid-Sea (Offline) Usage</h4>
+                    <p style="margin-bottom:1.5rem; color: var(--text-primary);">AirCable works 100% offline. Just plug in the provided USB Executable, double-click it on your laptop, and tell your colleagues to connect their phones to that laptop's Local Wi-Fi IP address shown on the screen.</p>
+
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-bolt"></i> 5. Fast Sharing (WhatsApp-Style)</h4>
+                    <p style="margin-bottom:1.5rem; color: var(--text-primary);">Tired of searching for files in folders? You can now <strong>Copy any image or file</strong> and simply <strong>Paste (Ctrl+V)</strong> anywhere on this screen. AirCable will detect it instantly and ask you where to send it. It is the fastest way to share!</p>
+
+                    <div style="background: rgba(0, 92, 230, 0.05); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
+                        <span style="font-weight: 700; color: var(--primary-color);"><i class="fa-solid fa-circle-info"></i> Pro Tip: Multiple Tabs Issue</span><br>
+                        <span style="font-size: 0.9rem; color: var(--text-primary);">If you see your device name appearing 3 or 4 times, it means you have AirCable open in **multiple browser tabs**. Each tab counts as a separate "Nearby Device". Close the extra tabs to see only one clean node!</span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(46, 204, 113, 0.08); border-radius: 8px; border: 1px solid rgba(46, 204, 113, 0.15);">
+                        <i class="fa-solid fa-shield-halved" style="color: var(--eco-green); font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                        <span style="color: var(--text-primary); font-weight: 600;">Transfers are direct and unlogged. Zero Data Retained.</span><br>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px; display: inline-block;">A high-security tool gifted by Cel-Ron Enterprises.</span>
+                        
+                        <div style="display: flex; gap: 20px; flex-direction: column; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed rgba(46, 204, 113, 0.3);">
+                            <div style="text-align: center; cursor: pointer; width: 100%; max-width: 500px;">
+                                <a href="card-front.png" target="_blank" download="Cel-Ron-Card-Front.png" title="Click to View & Download">
+                                    <img src="card-front.png" alt="Cel-Ron Front" style="width: 100%; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); border: 1px solid #eaeaea; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                                </a>
+                            </div>
+                            <div style="text-align: center; cursor: pointer; width: 100%; max-width: 500px;">
+                                <a href="card-back.png" target="_blank" download="Cel-Ron-Card-Back.png" title="Click to View & Download">
+                                    <img src="card-back.png" alt="Cel-Ron Back" style="width: 100%; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); border: 1px solid #eaeaea; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                                </a>
+                            </div>
+                        </div>
+                        <div style="font-weight: 600; font-size: 1.1rem; margin-top: 25px;">
+                            <a href="http://www.celron.net" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 10px;"><i class="fa-solid fa-globe"></i> www.celron.net</a> | 
+                            <a href="http://www.celron.shop" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 10px;"><i class="fa-solid fa-cart-shopping"></i> www.celron.shop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Footer Links -->
+        <footer style="margin-top: 30px; padding: 20px; text-align: center; border-top: 1px solid var(--border-color); width: 100%;">
+            <div style="display: flex; justify-content: center; gap: 30px; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">
+                <a href="/download.html" style="color: var(--primary-color); text-decoration: none;"><i class="fa-solid fa-mobile-screen"></i> Download App</a>
+                <a href="/download.html#pricing-section" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-credit-card"></i> Pricing & Subscriptions</a>
+                <a href="mailto:info@celron.net" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-envelope"></i> Contact Support</a>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">© 2026 Cel-Ron Enterprises Pte Ltd. All P2P transfers are encrypted.</p>
+        </footer>
+    </div>
+</body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('AirCable PWA Registered!', reg))
+                .catch(err => console.error('AirCable PWA Error:', err));
+        }
+    </script>
+</body>
+</html>
