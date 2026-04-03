@@ -18,28 +18,27 @@
             <h1 class="landing-title" style="font-size: 2.5rem; margin-top: 20px; font-weight: 800;">AirCable</h1>
             <p class="landing-subtitle" style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 600;"><i class="fa-solid fa-leaf" style="color: var(--eco-green);"></i> No USB. Zero E-Waste.</p>
 
-            <div style="display: flex; flex-direction: column; gap: 18px; width: 100%; max-width: 400px; margin: 0 auto;">
-                <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.15rem; padding: 1.15rem; border-radius:14px; font-weight: 800;">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:8px;"></i></button>
+            <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 650px; margin: 0 auto;">
+                <!-- 1. Start Sharing (Primary) -->
+                <button id="start-btn" class="btn btn-primary landing-btn" style="width: 100%; font-size: 1.2rem; padding: 1.25rem; border-radius:16px; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(0, 92, 230, 0.2);">Start P2P Sharing <i class="fa-solid fa-bolt" style="margin-left:10px;"></i></button>
                 
-                <!-- Discreet Download Link -->
-                <a href="/download.html" class="btn" style="width: 100%; border: 1.5px solid var(--border-color); color: var(--primary-color); font-weight: 700; border-radius: 14px; padding: 1.1rem; background: #eef5ff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s ease;" onmouseover="this.style.background='#e1edff'" onmouseout="this.style.background='#eef5ff'">
-                    <i class="fa-solid fa-mobile-screen"></i> Download Mobile & Desktop <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+                <!-- 2. Download Center -->
+                <a href="/download.html" class="btn" style="width: 100%; border: 1.5px solid var(--border-color); color: var(--primary-color); font-weight: 700; border-radius: 16px; padding: 1.2rem; background: #eef5ff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.2s ease; box-sizing: border-box;" onmouseover="this.style.background='#e1edff'" onmouseout="this.style.background='#eef5ff'">
+                    <i class="fa-solid fa-mobile-screen"></i> Download Mobile & Desktop <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i>
                 </a>
-            </div>
 
-            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
-                <!-- White-Label B2B Sponsor Block (Wide Display) -->
-                <div style="background: rgba(46, 204, 113, 0.08); padding: 22px; border-radius: 16px; border: 1px dashed rgba(46, 204, 113, 0.3); width: 100%; box-sizing: border-box;">
-                    <p style="color: var(--text-secondary); margin: 0 0 10px 0; font-size: 1rem; font-weight: 700;">🎁 A Gift from Cel-Ron Enterprises Pte Ltd, Singapore</p>
-                    <div style="font-weight: 600; font-size: 0.95rem; color: var(--text-primary);">
-                        <a href="http://www.celron.shop" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 10px;">www.celron.shop</a> | 
-                        <a href="http://www.celron.net" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 10px;">www.celron.net</a>
+                <!-- 3. B2B Sponsor Block -->
+                <div style="background: rgba(46, 204, 113, 0.08); padding: 25px; border-radius: 16px; border: 1px dashed rgba(46, 204, 113, 0.3); width: 100%; box-sizing: border-box; text-align: center;">
+                    <p style="color: var(--text-secondary); margin: 0 0 12px 0; font-size: 1.05rem; font-weight: 700;">🎁 A Gift from Cel-Ron Enterprises Pte Ltd, Singapore</p>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-primary);">
+                        <a href="http://www.celron.shop" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 12px;">www.celron.shop</a> | 
+                        <a href="http://www.celron.net" target="_blank" style="color: var(--primary-color); text-decoration: none; padding: 0 12px;">www.celron.net</a>
                     </div>
                 </div>
 
-                <!-- High-Conversion B2B Redemption Case (Wide Display) -->
+                <!-- 4. Voucher Registration -->
                 <div id="voucher-link-container" style="width: 100%;">
-                    <a href="#" id="open-voucher-btn" style="color: #e67e22; text-decoration: none; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; border: 1.5px dashed #e67e22; padding: 18px; border-radius: 16px; background: rgba(230, 126, 34, 0.05); transition: transform 0.2s ease; width: 100%; box-sizing: border-box;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+                    <a href="#" id="open-voucher-btn" style="color: #e67e22; text-decoration: none; font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; border: 1.8px dashed #e67e22; padding: 22px; border-radius: 16px; background: rgba(230, 126, 34, 0.05); transition: all 0.2s ease; width: 100%; box-sizing: border-box;" onmouseover="this.style.transform='scale(1.01)'; this.style.background='rgba(230, 126, 34, 0.08)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(230, 126, 34, 0.05)';">
                         <i class="fa-solid fa-ticket fa-lg"></i> Have a Cel-Ron voucher? <span style="text-decoration: underline;">Click here to Register & Unlock your Lifetime Pro License →</span>
                     </a>
                 </div>
