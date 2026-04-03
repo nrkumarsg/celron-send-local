@@ -3,6 +3,8 @@
   "short_name": "AirCable",
   "start_url": "./",
   "display": "standalone",
+  "orientation": "portrait",
+  "id": "com.celron.aircable.p2p",
   "background_color": "#f2fbf5",
   "theme_color": "#2ecc71",
   "description": "Eco-friendly P2P file sharing by Cel-Ron Enterprises",
@@ -10,12 +12,14 @@
     {
       "src": "logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "share_target": {

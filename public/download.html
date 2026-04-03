@@ -9,30 +9,37 @@
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
     <style>
         .download-center {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 20px;
         }
         .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 2rem;
             margin-top: 3rem;
+            width: 100%;
         }
         .platform-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             padding: 2.5rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            max-width: 650px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .platform-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
         }
         .platform-icon {
             font-size: 4rem;
@@ -81,22 +88,26 @@
         }
         .pricing-grid {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 2rem;
             margin-top: 2rem;
-            flex-wrap: wrap;
+            width: 100%;
         }
         .pricing-card {
             background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 2.5rem;
             width: 100%;
-            max-width: 380px;
+            max-width: 650px;
             border: 1px solid var(--border-color);
             text-align: left;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+        .pricing-card:hover { border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .pricing-card.featured {
             border: 2px solid var(--primary-color);
             transform: scale(1.05);
